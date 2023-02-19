@@ -1,43 +1,61 @@
 In english | [По-русски](../README.md)
 
-# Jobs
+# Scripts for changes to the school electronic diary
+Designed to correct bad grades and delete teacher comments in an electronic diary
 
-The project is designed to search for programmer vacancies in Moscow among the main 10 programming languages 
-on the HeadHunter and SuperJob services.
-The list of programming languages is set in the file settings.py.
-
-### How to install?
-
+### How to use?
 Python3 should already be installed.
-Then use pip (or pip3, there is a conflict with Python2) to install dependencies.
-Open the command line with the Win+R keys and enter:
-```
-pip install -r requirements.txt
-```
-It is recommended to use virtualenv/venv to isolate the project.
-(https://docs.python.org/3/library/venv.html)
+If the website of the electronic diary with the database has not yet been launched, you need to download the code of the electronic diary
+[by link](https://github.com/devmanorg/e-diary/tree/master ).
+In the above repository in the file `README.md ` it is written how to install and launch an electronic diary.
+
+Next, you need to download the script code `scripts.py ` [by link](https://github.com/mulchus/E-diary-scripts):
 
 
-### Setting environment variables
+### Scripts for changes to the school electronic diary
+To use them, it is necessary:
+- file `scripts.py ` upload to the server in the root folder of the electronic diary (where the file ``manage.py`` is located);
+- run the command line `Django shell` with the command
+```
+python manage.py shell
+```
+and import scripts in it with the command
+```
+from scripts import *
+```
 
-Before starting, you need to create a ".env" file in the PATH_TO_THE_FOLDER_WITH_SCRIPT\
-and configure the environment variables by writing the following in it.
-Authorization is carried out by the login password of the user registered on the site.
+Then the following commands are entered.
+
+Important! The student's full name can be entered partially. The script will work if it finds only one student with the specified data.
 ```
-SJ_SECRET_KEY=SuperJob secret key, as specified here: https://api.superjob.ru/
-SJ_ID=ID of the application registered in the API, as specified here: https://api.superjob.ru/
-SJ_LOGIN=Superjob user login
-SJ_PASSWORD=Superjob User Password
+fix_marks('Student's full name', 'Lesson name')
 ```
+- corrects all grades 2 and 3 by 5 for the specified student in the specified subject.
 
 
-### The command to run the script:
 ```
-python PATH_TO_THE_FOLDER_WITH_SCRIPT\main.py
+remove_chastisements('Student's full name', 'Lesson name')
 ```
-If you have installed a virtual environment, then the command can be entered without the path to the script.
+- removes all the teacher's comments on the specified subject from the specified student.
+
+
+```
+remove_commendation('Student's full name', 'Lesson name')
+```
+- removes from the specified student all the teacher's praises on the specified subject.
+
+
+```
+create_chastisement('Student's full name', 'Lesson name`)
+```
+- adds the teacher's remark on the specified subject to the specified student. A comment is selected randomly from the list of comments in the **chastisement variable**
+
+
+```
+create_commendation('Student's full name', 'Lesson name`)
+```
+- adds the teacher's praise for the specified subject from the specified student. The praise is selected randomly from the list of praises in the **commendation variable**
 
 
 ### Project Goals
-This code was written for educational purposes as part of an online course for web developers at [dvmn.org]
-(https://dvmn.org/).
+This code was written for educational purposes as part of an online course for web developers at [dvmn.org](https://dvmn.org/).
