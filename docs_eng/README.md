@@ -5,11 +5,13 @@ Designed to correct bad grades and delete teacher comments in an electronic diar
 
 ### How to use?
 Python3 should already be installed.
+
 If the website of the electronic diary with the database has not yet been launched, you need to download the code of the electronic diary
 [by link](https://github.com/devmanorg/e-diary/tree/master ).
 In the above repository in the file `README.md ` it is written how to install and launch an electronic diary.
-You can download the database by following the link https://dvmn.org/filer/canonical/1562234129/166/
-Next, you need to download the script code `scripts.py ` [by link](https://github.com/mulchus/E-diary-scripts):
+You can download the database by following [the link](https://dvmn.org/filer/canonical/1562234129/166/)
+
+Next, you need to download the script code `scripts.py ` [by link](https://github.com/mulchus/E-diary-scripts)
 
 
 ### Scripts for changes to the school electronic diary
